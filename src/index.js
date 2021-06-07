@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-ReactDOM.render(
-  <React.StrictMode>
+import { BrowserRouter as Router } from 'react-router-dom';
+require('react-web-vector-icons/fonts');
+ReactDOM.render(  
+     <Router>
     <App />
-  </React.StrictMode>,
+    </Router>
+  ,
   document.getElementById('root')
 );
 
