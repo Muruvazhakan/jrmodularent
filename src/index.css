@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.carousel .dot{
+  color: black;
+}
+.carousel .dot .selected{
+  color: rgb(145, 235, 0);
+}

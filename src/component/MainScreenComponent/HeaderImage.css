@@ -13,13 +13,13 @@
   cursor: pointer;
   background: linear-gradient(60deg, #0c4281, #b5b8b9);
   text-decoration: none;
-  box-shadow: 0 15px 14px rgb(255 0 177 / 12%);
+  box-shadow: 15px 15px 14px rgb(0 52 177 / 52%);
   opacity: 1;
  
 }
 .buttonstyle:hover{
     background: linear-gradient(60deg, #bebebe, #103947);
-    box-shadow: 0 15px 14px rgb(0 0 177 / 12%);
+    box-shadow: 0 15px 14px rgb(0 0 177 / 52%);
     text-align: end;
     align-items: baseline;
     justify-content: initial;
@@ -90,4 +90,107 @@
     } */
 
 
+}
+.Section{    
+    height: 785px;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.Content { 
+    width: 100%;
+    height: 100px;
+}
+
+
+/* .Left { 
+    align-items: center;
+    padding-left: 230px;
+    padding-top: 180px;
+    justify-content: center;
+} */
+.container {
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin-right: auto;
+    margin-left: auto;   
+    padding-right: 50px;
+    padding-left: 50px;
+ 
+  }
+
+.Title { 
+    font-size: 55px;
+  color: #fbf7f7;
+  font-weight: 800;
+  border-radius: 3;
+  align-items: center;
+  justify-content: center;
+  border-color: blueviolet;
+  padding-top: 20%;
+}
+
+
+.Desc { 
+    width: 472px;
+  font-size: 20px;
+  color: #9ea0ac;
+  line-height: 30px;
+  margin-top: 58px;
+}
+.sidebar{
+    height: 100%;
+    width: 250px;
+    list-style: none;
+    background-color: rgb(1, 40, 61,0.719);
+    position: absolute;
+    color: honeydew;
+    
+}   
+
+
+
+
+
+@media screen and (max-width:960px){
+    .Title{
+        font-size: 25px;
+        /* color: wheat; */
+    }
+    .Left{
+        align-items: center;
+    padding-left: 200px;
+    padding-top: 180px;
+    /* position: relative; */
+    /* justify-content: center; */
+    }
+    .buttonstyle{
+        width: 150px;
+     height: 51px;
+     line-height: 51px;
+  font-size: 15px;
+    }
+}
+
+@media screen and (max-width:550px){
+    .Title{
+        font-size: 20px;
+       top: 0px;
+       
+    }
+    .buttonstyle{
+        width: 150px;
+     height: 31px;
+     line-height: 31px;
+  font-size: 15px;
+  padding-top: 0px;
+    }
+    .Left{
+        align-items: center;
+    padding-left: 50px;
+    padding-top: 180px;
+    position: relative;
+    justify-content: center;
+    }
 }

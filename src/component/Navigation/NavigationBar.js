@@ -1,11 +1,13 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 import Img from '../../assest/jrlogo.jpg';
 import { Link } from 'react-router-dom';
 import { MenuItem } from './MenuItem';
 import Icon, { FontAwesome, Feather } from 'react-web-vector-icons';
-import { RiMenuUnfoldFill,RiMenuFoldFill } from "react-icons/ri";
+import { RiMenuUnfoldFill, RiMenuFoldFill } from "react-icons/ri";
 import './NavigationBar.css';
+import { IconContext } from 'react-icons/lib';
+import { FaBars, FaTimes } from 'react-icons/fa';
 // const logos = require('../../assest/jrent1.png'); 
 import logo from '../../assest/jren2.png';
 // const Logoname = styled.section`
@@ -13,58 +15,102 @@ import logo from '../../assest/jren2.png';
 //   height: 200px;
 //   width: 20%;
 // `;
-const NavigationBar = () => {
- 
-  const initialState= {
-    menuflag:false
-  }
-  const[state,setState] = useState(initialState);
 
+const NavigationBar = () => {
+  const [button, setButton] = useState(true);
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setButton(false);
+    } else {
+      setButton(true);
+    }
+  };
+  const closeMobileMenu = () => setClick(false);
   useEffect(() => {
-    console.log("MenuItem" + MenuItem);
-    console.log(MenuItem);
-  })
-  const menuHandler =()=>{
+    showButton();
+    window.addEventListener('resize', showButton);
+    return (
+      window.removeEventListener('resize', showButton)
+    )
+  }, []);
+
+  const initialState = {
+    menuflag: false
+  }
+  const [state, setState] = useState(initialState);
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+  // useEffect(() => {
+  //   console.log("MenuItem" + MenuItem);
+  //   console.log(MenuItem);
+  // })
+  const menuHandler = () => {
     setState({
       ...state,
-      menuflag:!state.menuflag,
+      menuflag: !state.menuflag,
     })
   }
   return (
-    <nav className="NavbarItems">    
-      <h1>
-      {/* <Logoname/> */}
-      <div className="Navbar-logo"> 
-      <div className="logo "  onClick={()=>menuHandler()}> 
-      {!state.menuflag ?
-       <RiMenuUnfoldFill  size="2em"/>
-       : <RiMenuFoldFill  size="2em"/>
-    }   
-     </div>
-      <img src={logo} alt="Logo" width="550" height="100" />
-      
-     
-      {/* <h3>JR Modular Enterprises </h3> */}
-      {/* <img src={logos} width="100" height="50" /> */}
-      {/* <div className="imgback"></div> */}
-     
-      </div>
-      </h1>
-      <div>
-        <ul className={state.menuflag?'nav-menu active':'nav-menu' }>
+    <>
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <nav className='navbar'>
+          <div className="navbar-container container ">
 
-          {MenuItem.map((item, index) => {
-            return (
-              <li key={index}>
-                < a className={item.cName} href={item.url}>{item.title}</a>
-              </li>
-            )
-          })}
+            <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+              <h3 className='logo-name'>JR Modular Enterprises</h3>
+              
+            </Link>
+            <div className='menu-icon' onClick={handleClick}>
+              {click ? <FaTimes /> : <FaBars />}
+            </div>           
+            <ul className={click ? 'nav-menu active' : 'nav-menu'}>
 
-        </ul>
-      </div>
-      
-    </nav>
+              {MenuItem.map((item, index) => {
+                return (
+                  <li className='nav-item'>
+                    < Link className='nav-links' to={item.url} onClick={closeMobileMenu}>{item.title}</Link>
+                  </li>
+
+                )
+              })}
+
+            </ul>    
+
+         
+
+
+
+
+
+            {/* 
+        {state.menuflag ?
+          <div className="sidebar">
+            <ul className="sidebarList">
+              {MenuItem.map((item, index) => {
+                return (
+                  <li key={index} className="row" onClick={() => {
+                    window.location.pathname = item.url
+                  }}>
+                    {item.display !== "a" ?
+                      // < a 
+                      // // className="row"
+                      // className={item.cName}
+
+                      // href={item.url}>{item.title}</a>
+                      <div>{item.title}</div>
+                      : null}
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+          : null} */}
+
+
+          </div>
+        </nav>
+      </IconContext.Provider>
+    </>
   );
 };
 

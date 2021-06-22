@@ -4,28 +4,33 @@ import styled from 'styled-components';
 import NavigationBar from '../Navigation/NavigationBar';
 import Background from '../../assest/jr1.png';
 import { RiMenuUnfoldFill,RiMenuFoldFill } from "react-icons/ri";
+import { Button } from '../Button/Button'; 
 import './HeaderImage.css'
   const Section = styled.section`
+  background: #1c2237;
   background-image: url(${Background});
-  height: 785px;
+   height: 785px;
   display: block;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  
 `;
 
 const Content = styled.div`
   width: 100%;
-  height: 100px;
+  // height: 100px;
 `;
 
 const Left = styled.div`
-  padding-left: 220px;
-  padding-top: 143px;
+align-items: center;
+   padding-left: 230px;
+   padding-top: 180px;
+   justify-content: center;
 `;
 
 const Title = styled.p`
   font-size: 55px;
-  color: rgb(13, 40, 61,0.719);
+  color: #373737;
   font-weight: 800;
   border-radius: 3;
   border-color: blueviolet;
@@ -39,43 +44,32 @@ const Desc = styled.p`
   margin-top: 58px;
 `;
 
-const Button = styled.a`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 18px;
-  margin-top: 10%;
-  width: 371px;
-  height: 71px;
-  line-height: 71px;
-  font-size: 22px;
-  text-align: center;
-  color: #fff;
-  cursor: pointer;
-  background: linear-gradient(60deg, #0546d6, #3f89fc);
-  text-decoration: none;
-  box-shadow: 0 15px 14px rgb(255 0 177 / 12%);
-`;
+
  const HeaderImage = () => {
     return (
         <div>
              <Section>
-             <NavigationBar/> 
-             <Left>
-          <Title>
+              
+             {/* <NavigationBar/>  */}
+             <div className="container">
+          <div className="Title">
           Interior Designer and Decorator in Chennai 
-          </Title>
-          <Desc>
-            
-          </Desc>     
+          </div>            
           <div className="buttonstyle"> 
           < a className="buttona" href="#">Get Quotes</a>
           {/* <div className="butticon">
           <RiMenuUnfoldFill  size="1.2em"/>
           </div> */}
           </div>  
-        </Left>
+          {/* <Button buttonStyle='btn--primary'
+                      buttonSize='btn--large'
+                      buttonColor='primary'
+                     >
+                        Get
+                      </Button> */}
+        </div>
                  </Section>
+                 
         </div>
     )
 }
